@@ -1,0 +1,130 @@
+<div
+  style="
+    display: flex;
+    margin-top: 8px;
+    align-items: center;
+    margin-bottom: -20px;
+  "
+>
+  <div class="olho"></div>
+  <style>
+    .olho {
+      background: #1e2d7d;
+      border-radius: 50%;
+      margin: 0 10px;
+      height: 10px;
+      width: 10px;
+      display: block !important;
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+      transform: scale(1);
+      animation: pulse 1s infinite;
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+      }
+    }
+  </style>
+
+  <p>
+    <b><span class="viwer_pro">44</span> pessoas</b> estão vendo esse produto
+    agora
+  </p>
+</div>
+
+<style>
+selector {
+  top: 90px;
+}
+
+selector .swiper-pagination {
+  text-align: left;
+}
+
+selector .swiper-wrapper {
+  -webkit-transition-timing-function: linear !important;
+  transition-timing-function: linear !important;
+}
+
+selector .elementor-swiper-button-prev {
+  width: 40px;
+  top: -60px !important;
+  left: -8px;
+  z-index: 2;
+}
+
+selector .elementor-swiper-button-next {
+  width: 40px;
+  top: -60px !important;
+  left: calc(0% + 80px);
+  z-index: 2;
+}
+
+/*Apenas Tablet*/
+@media (max-width: 1024px) and (min-width: 768px) {
+  selector .elementor-swiper-button-prev {
+    top: calc(0% - 30px);
+    left: calc(50% - 90px) !important;
+    z-index: 2;
+  }
+
+  selector .elementor-swiper-button-next {
+    top: calc(0% - 30px);
+    left: calc(50% - 10px) !important;
+    z-index: 2;
+  }
+}
+
+/*Apenas Mobile*/
+@media (max-width: 767px) {
+  selector .elementor-swiper-button-prev {
+    top: calc(0% - 30px);
+    left: calc(90% - 100px);
+    z-index: 2;
+  }
+
+  selector .elementor-swiper-button-next {
+    top: calc(0% - 30px);
+    left: calc(90% - 20px);
+    z-index: 2;
+  }
+  selector {
+    top: 70px;
+  }
+
+  selector .swiper-pagination {
+    text-align: center;
+  }
+
+  selector .swiper-slide {
+    overflow: visible !important;
+  }
+
+  selector::before {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    z-index: 2;
+    background: linear-gradient(
+      to right,
+      #000 0%,
+      transparent 25%,
+      transparent 75%,
+      #000 100%
+    );
+  }
+
+  .elementor-arrows-position-outside .swiper-container {
+    width: 100%;
+  }
+}
+</style>

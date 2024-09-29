@@ -1,0 +1,86 @@
+<style>
+  /* Inicialmente, os containers não possuem o gradiente */
+  .download-container {
+    transition: background 1s ease;
+    background-size: 200% 100%;
+    background-position: left;
+  }
+
+  /* Classe que adiciona o gradiente ao container */
+  .animate-gradient {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 104, 56, 0.24) 0%,
+      rgba(0, 104, 56, 0.24) 28.14%,
+      rgba(255, 255, 255, 0.24) 43.27%
+    );
+    background-size: 200% 100%;
+    background-position: left;
+    transition: 2s;
+    animation: slide-right 2s forwards, fade-out 2s;
+  }
+
+  /* Animação que move o gradiente da esquerda para a direita */
+  @keyframes slide-right {
+    from {
+      background-position: right;
+    }
+    to {
+      background-position: left;
+    }
+  }
+
+  /* Suaviza a saída do gradiente após o movimento */
+  @keyframes slide-left {
+    from {
+      background-position: left;
+    }
+    to {
+      background-position: right;
+    }
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log(
+      "Página carregada, adicionando eventos de clique nos botões..."
+    );
+
+    // Seleciona todos os botões de download
+    const downloadButtons = document.querySelectorAll(".jet-download");
+
+    // Adiciona um evento de clique em cada botão
+    downloadButtons.forEach((button) => {
+      console.log("Adicionando evento de clique a um botão...");
+
+      button.addEventListener("click", function (e) {
+        e.preventDefault(); // Previne comportamento padrão (para testes, remova depois)
+        console.log("Botão de download clicado!");
+
+        // Obtém o ID do botão e encontra o container correspondente
+        const buttonId = this.closest(".elementor-widget").getAttribute("id");
+        const containerId = buttonId.replace(
+          "button-donwload",
+          "container-donwload"
+        );
+
+        // Adiciona a classe de animação no container correspondente
+        const container = document.getElementById(containerId);
+        if (container) {
+          container.classList.add("animate-gradient");
+
+          // Para remover a animação após um tempo (caso queira que pare após alguns segundos)
+          setTimeout(() => {
+            console.log("Removendo animação após 2 segundos...");
+            container.classList.remove("animate-gradient");
+          }, 2000); // 2 segundos de duração
+        } else {
+          console.log("Container não encontrado!");
+        }
+
+        // Permite que o download ocorra (remova esta linha para testes)
+        window.location.href = this.getAttribute("href");
+      });
+    });
+  });
+</script>
